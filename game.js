@@ -230,6 +230,13 @@ class ClaudeCodeGame {
         this.startGame();
     }
 
+    backToLanding() {
+        this.hideUserMenu();
+        if (this.heartTimerInterval) clearInterval(this.heartTimerInterval);
+        this.showLanding();
+        window.scrollTo(0, 0);
+    }
+
     startGame() {
         document.getElementById('app-header').style.display = 'block';
         document.getElementById('main-content').style.display = 'block';
