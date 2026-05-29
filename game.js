@@ -187,8 +187,16 @@ class ClaudeCodeGame {
             if (session?.user) {
                 this.user = session.user;
                 await this.loadFromCloud(session.user);
+            } else {
+                // No session yet — sign in anonymously so every visitor is counted
+                // (silent, no signup friction). Guests who later log in merge via _mergeProgress.
+                const { data: anon } = await _supabase.auth.signInAnonymously();
+                if (anon?.user) {
+                    this.user = anon.user;
+                    await this.loadFromCloud(anon.user);
+                }
             }
-        } catch (e) { /* offline / not configured — stay local */ }
+        } catch (e) { /* offline / anonymous-auth disabled — stay local */ }
 
         // Handle Google OAuth redirect landing back on the page
         _supabase.auth.onAuthStateChange(async (event, session) => {
@@ -546,9 +554,11 @@ class ClaudeCodeGame {
         const emailEl = document.getElementById('user-menu-email');
         const loginBtn = document.getElementById('menu-login-btn');
         const logoutBtn = document.getElementById('menu-logout-btn');
-        if (emailEl) emailEl.textContent = this.user ? (this.user.email || 'מחובר') : 'מצב אורח (נשמר במכשיר)';
-        if (loginBtn) loginBtn.style.display = this.user ? 'none' : 'flex';
-        if (logoutBtn) logoutBtn.style.display = this.user ? 'flex' : 'none';
+        // Anonymous users are tracked for analytics but treated as guests in the UI
+        const realUser = this.user && !this.user.is_anonymous;
+        if (emailEl) emailEl.textContent = realUser ? (this.user.email || 'מחובר') : 'מצב אורח (נשמר במכשיר)';
+        if (loginBtn) loginBtn.style.display = realUser ? 'none' : 'flex';
+        if (logoutBtn) logoutBtn.style.display = realUser ? 'flex' : 'none';
     }
 
     showAuthModal() {
