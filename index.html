@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שולטים ב-Claude Code דרך משחק — חינם, בעברית</title>
+    <meta name="description" content="משחק לימודי חינמי בעברית ללימוד Claude Code מאפס. 126 תרגילים אינטראקטיביים בסגנון Duolingo — מאפס ועד מאסטר, בקצב שלכם.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="שולטים ב-Claude Code דרך משחק">
+    <meta property="og:description" content="126 תרגילים אינטראקטיביים בעברית · מאפס ועד מאסטר, בקצב שלכם. חינם לגמרי.">
+    <meta property="og:image" content="https://hilell-aknine.github.io/claude-code-game/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://hilell-aknine.github.io/claude-code-game/">
+    <meta property="og:locale" content="he_IL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="שולטים ב-Claude Code דרך משחק">
+    <meta name="twitter:description" content="126 תרגילים אינטראקטיביים בעברית · מאפס ועד מאסטר. חינם לגמרי.">
+    <meta name="twitter:image" content="https://hilell-aknine.github.io/claude-code-game/og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=11">
+</head>
+<body>
+
+    <!-- Scroll-bound flipbook background (landing page only) -->
+    <canvas id="flipbook-canvas" aria-hidden="true"></canvas>
+    <div id="flipbook-scrim" aria-hidden="true"></div>
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="landing-page" style="display: none;">
+
+        <!-- Hero -->
+        <section class="landing-hero">
+            <div class="landing-hero-glow"></div>
+            <div class="landing-hero-glow2"></div>
+            <div class="landing-hero-grid"></div>
+
+            <div class="landing-badge"><span class="landing-badge-dot"></span> משחק לימודי אינטראקטיבי · חינם לגמרי</div>
+
+            <!-- Terminal mockup -->
+            <div class="landing-terminal" dir="ltr">
+                <div class="landing-terminal-bar">
+                    <span class="term-dot term-red"></span>
+                    <span class="term-dot term-yellow"></span>
+                    <span class="term-dot term-green"></span>
+                    <span class="term-title">Terminal</span>
+                </div>
+                <div class="landing-terminal-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">claude</span></div>
+                    <div class="term-line term-fade1"><span class="term-output">Claude Code v1.0 &#8212; Ready</span></div>
+                    <div class="term-line term-fade2"><span class="term-prompt">&gt;</span> <span class="term-typing">fix the bug in server.js<span class="term-cursor">|</span></span></div>
+                </div>
+            </div>
+
+            <h1 class="landing-title">תשלטו ב-<span class="landing-title-highlight">Claude Code</span><br>בדרך שבה אתם <em>באמת</em> לומדים</h1>
+            <p class="landing-whatis"><i class="fa-solid fa-terminal"></i> מה זה Claude Code? עוזר חכם (AI) של חברת Anthropic שיושב במחשב שלכם · אתם מבקשים ממנו בעברית פשוטה, והוא כותב, מתקן ומריץ קוד בשבילכם.</p>
+            <p class="landing-subtitle">לא וידאו. לא מאמר. <strong>משחק.</strong><br>126 תרגילים אינטראקטיביים שהופכים אתכם ממתחילים למאסטרים — בעברית, בקצב שלכם.</p>
+
+            <button class="landing-cta" onclick="game.hideLanding()">
+                <span class="landing-cta-text"><i class="fa-solid fa-play"></i> התחילו עכשיו — השיעור הראשון לוקח 3 דקות</span>
+                <span class="landing-cta-shine"></span>
+            </button>
+            <p class="landing-social-proof"><i class="fa-solid fa-users"></i> הצטרפו ל-2,400+ מפתחים שכבר שלטו ב-Claude Code</p>
+            <p class="landing-hero-micro">אפס ניסיון נדרש · עובד על כל מכשיר · בלי הרשמה</p>
+        </section>
+
+        <!-- Who is this for? -->
+        <section class="landing-section" dir="rtl">
+            <h2 class="landing-section-title">למי זה <span class="title-accent">מתאים?</span></h2>
+            <div class="landing-audience-grid">
+                <div class="landing-audience-card">
+                    <span class="landing-audience-icon"><i class="fa-solid fa-seedling"></i></span>
+                    <span class="landing-audience-title">המתחיל הסקרן</span>
+                    <span class="landing-audience-text">מפתח שרק שמע על Claude Code ולא יודע מאיפה להתחיל</span>
+                </div>
+                <div class="landing-audience-card">
+                    <span class="landing-audience-icon" style="--accent: #3b82f6;"><i class="fa-solid fa-layer-group"></i></span>
+                    <span class="landing-audience-title">ה-DevOps / Full-stack</span>
+                    <span class="landing-audience-text">מי שרוצה לחסוך 10+ שעות בשבוע על משימות חוזרות</span>
+                </div>
+                <div class="landing-audience-card">
+                    <span class="landing-audience-icon" style="--accent: #f59e0b;"><i class="fa-solid fa-coins"></i></span>
+                    <span class="landing-audience-title">המשלם על API</span>
+                    <span class="landing-audience-text">כל מי שמשלם על טוקנים ורוצה לייעל עלויות בלי להתפשר</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="landing-stats-section">
+            <div class="landing-stats-row">
+                <div class="landing-stat-box">
+                    <span class="landing-stat-number" data-count="126">126</span>
+                    <span class="landing-stat-label">תרגילים</span>
+                </div>
+                <div class="landing-stat-divider"></div>
+                <div class="landing-stat-box">
+                    <span class="landing-stat-number" data-count="20">20</span>
+                    <span class="landing-stat-label">שיעורים</span>
+                </div>
+                <div class="landing-stat-divider"></div>
+                <div class="landing-stat-box">
+                    <span class="landing-stat-number" data-count="7">7</span>
+                    <span class="landing-stat-label">סוגי תרגילים</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain Points -->
+        <section class="landing-section">
+            <h2 class="landing-section-title">בלי Claude Code, אתם<br><span class="title-accent">עובדים פי 10 יותר קשה</span></h2>
+            <div class="landing-pain-grid">
+                <div class="landing-pain-card">
+                    <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">😵‍💫</span></div>
+                    <div class="landing-pain-content">
+                        <span class="landing-pain-title">מאיפה מתחילים?</span>
+                        <span class="landing-pain-text">שמעתם על Claude Code אבל ההתקנה, ההגדרות והפקודות מרגישים מבלבלים</span>
+                    </div>
+                </div>
+                <div class="landing-pain-card">
+                    <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">⏳</span></div>
+                    <div class="landing-pain-content">
+                        <span class="landing-pain-title">שעות על משימות של דקות</span>
+                        <span class="landing-pain-text">קוראים, מחפשים, מתקנים ידנית — דברים שClaude Code עושה בשניות</span>
+                    </div>
+                </div>
+                <div class="landing-pain-card">
+                    <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">🔥</span></div>
+                    <div class="landing-pain-content">
+                        <span class="landing-pain-title">שורפים טוקנים (= כסף)</span>
+                        <span class="landing-pain-text">הוראות לא מדויקות, שיחות ארוכות, מודל לא מתאים — הכל עולה</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before / After -->
+        <section class="landing-section" dir="rtl">
+            <h2 class="landing-section-title">לפני ואחרי <span class="title-accent">Claude Code</span></h2>
+            <div class="landing-ba-grid">
+                <div class="landing-ba-col landing-ba-before">
+                    <div class="landing-ba-head"><span class="landing-ba-tag">לפני</span></div>
+                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מבזבזים שעה על באג שמתחבא בין הקבצים</div>
+                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מעתיקים קוד הלוך ושוב מהדפדפן לעורך</div>
+                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מנחשים פקודות ומקווים שלא נשבור כלום</div>
+                </div>
+                <div class="landing-ba-col landing-ba-after">
+                    <div class="landing-ba-head"><span class="landing-ba-tag landing-ba-tag-after">אחרי</span></div>
+                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> הבאג נמצא ומתוקן בשניות, מול העיניים</div>
+                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> Claude עובד ישירות על הקבצים בפרויקט</div>
+                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> כל פעולה מסוכנת מבקשת אישור קודם</div>
+                </div>
+            </div>
+            <div class="landing-ba-terminal" dir="ltr">
+                <div class="landing-terminal-bar">
+                    <span class="term-dot term-red"></span>
+                    <span class="term-dot term-yellow"></span>
+                    <span class="term-dot term-green"></span>
+                    <span class="term-title">Terminal</span>
+                </div>
+                <div class="landing-terminal-body">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">claude</span> <span class="term-output">"fix the bug in server.js"</span></div>
+                    <div class="term-line"><span class="term-output">✓ Found null check missing on line 42</span></div>
+                    <div class="term-line"><span class="term-output">✓ Patched &amp; tests passing</span></div>
+                    <div class="term-line"><span style="color:#28c840;">done in 4 seconds</span> <span class="term-cursor">|</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You'll Master -->
+        <section class="landing-section">
+            <h2 class="landing-section-title">מה תשלטו בזה<br><span class="title-accent">אחרי 15 דקות של משחק?</span></h2>
+            <div class="landing-modules-grid">
+                <div class="landing-module-card" style="--accent: #00d4aa;">
+                    <div class="landing-module-num">01</div>
+                    <span class="landing-module-icon"><i class="fa-solid fa-terminal"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">התקנה והפעלה</span>
+                        <span class="landing-module-sub">מאפס ועד השיחה הראשונה עם המחשב</span>
+                    </div>
+                </div>
+                <div class="landing-module-card" style="--accent: #3b82f6;">
+                    <div class="landing-module-num">02</div>
+                    <span class="landing-module-icon" style="color: #3b82f6; background: rgba(59,130,246,0.08);"><i class="fa-solid fa-file-code"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">לעבוד עם הקבצים שלכם</span>
+                        <span class="landing-module-sub">לקרוא, לערוך, לכתוב ולחפש קבצים אוטומטית</span>
+                    </div>
+                </div>
+                <div class="landing-module-card" style="--accent: #f59e0b;">
+                    <div class="landing-module-num">03</div>
+                    <span class="landing-module-icon" style="color: #f59e0b; background: rgba(245,158,11,0.08);"><i class="fa-solid fa-shield-halved"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">שליטה ובטיחות</span>
+                        <span class="landing-module-sub">להישאר בשליטה · המחשב מבקש אישור לפני כל שינוי</span>
+                    </div>
+                </div>
+                <div class="landing-module-card" style="--accent: #8b5cf6;">
+                    <div class="landing-module-num">04</div>
+                    <span class="landing-module-icon" style="color: #8b5cf6; background: rgba(139,92,246,0.08);"><i class="fa-solid fa-bullseye"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">לבקש נכון ולחסוך</span>
+                        <span class="landing-module-sub">איך לכתוב בקשה ברורה שתקבלו עליה תוצאה מעולה</span>
+                    </div>
+                </div>
+                <div class="landing-module-card" style="--accent: #ec4899;">
+                    <div class="landing-module-num">05</div>
+                    <span class="landing-module-icon" style="color: #ec4899; background: rgba(236,72,153,0.08);"><i class="fa-solid fa-plug"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">אוטומציות וחיבורים</span>
+                        <span class="landing-module-sub">שהמחשב יעשה דברים לבד ויתחבר לכלים אחרים</span>
+                    </div>
+                </div>
+                <div class="landing-module-card" style="--accent: #14b8a6;">
+                    <div class="landing-module-num">06</div>
+                    <span class="landing-module-icon" style="color: #14b8a6; background: rgba(20,184,166,0.08);"><i class="fa-solid fa-robot"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">עוזרים חכמים</span>
+                        <span class="landing-module-sub">לתת למחשב לפצל משימה גדולה ולעבוד על כמה דברים יחד</span>
+                    </div>
+                </div>
+                <div class="landing-module-card" style="--accent: #f43f5e;">
+                    <div class="landing-module-num">07</div>
+                    <span class="landing-module-icon" style="color: #f43f5e; background: rgba(244,63,94,0.08);"><i class="fa-solid fa-rocket"></i></span>
+                    <div class="landing-module-content">
+                        <span class="landing-module-text">החדש ב-2026</span>
+                        <span class="landing-module-sub">תכנון לפני ביצוע, מיומנויות מוכנות, וחזרה אחורה בלחיצה</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="landing-section">
+            <h2 class="landing-section-title">איך זה עובד?</h2>
+            <div class="landing-steps">
+                <div class="landing-step">
+                    <div class="landing-step-num">1</div>
+                    <div class="landing-step-connector"></div>
+                    <div class="landing-step-text">
+                        <strong>קוראים סיכום ממוקד</strong>
+                        <span>30 שניות של תיאוריה — רק מה שחשוב</span>
+                    </div>
+                </div>
+                <div class="landing-step">
+                    <div class="landing-step-num">2</div>
+                    <div class="landing-step-connector"></div>
+                    <div class="landing-step-text">
+                        <strong>מתרגלים ב-7 סוגי תרגילים</strong>
+                        <span>בחירה · השלמה · סידור · השוואה · התאמה · שיפור · זיהוי</span>
+                    </div>
+                </div>
+                <div class="landing-step">
+                    <div class="landing-step-num">3</div>
+                    <div class="landing-step-text">
+                        <strong>צוברים נקודות, עולים רמה</strong>
+                        <span>לבבות · רצף ימים · הישגים — בדיוק כמו Duolingo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gamification mockup -->
+            <div class="landing-game-mockup" dir="rtl">
+                <div class="landing-gm-row">
+                    <span class="landing-gm-label">לבבות</span>
+                    <span class="landing-gm-hearts">❤️❤️❤️❤️❤️</span>
+                </div>
+                <div class="landing-gm-row">
+                    <span class="landing-gm-label">XP</span>
+                    <div class="landing-gm-xpbar"><div class="landing-gm-xpfill"></div></div>
+                    <span class="landing-gm-xptext">340 / 500</span>
+                </div>
+                <div class="landing-gm-row">
+                    <span class="landing-gm-label">סטריק</span>
+                    <span class="landing-gm-streak">🔥 5 ימים ברצף</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="landing-section landing-final-cta">
+            <div class="landing-final-card">
+                <div class="landing-final-glow"></div>
+                <div class="landing-final-emoji">🚀</div>
+                <h2>מוכנים?</h2>
+                <p>מ-<strong>Beginner</strong> ל-<strong>Claude Code Master</strong><br>בחינם · בעברית · בקצב שלכם</p>
+                <ul class="landing-final-benefits">
+                    <li><i class="fa-solid fa-circle-check"></i> שולטים בכלי תוך שעה של משחק, לא שבוע של תיעוד</li>
+                    <li><i class="fa-solid fa-circle-check"></i> חוסכים שעות בשבוע ומפסיקים לשרוף טוקנים מיותר</li>
+                    <li><i class="fa-solid fa-circle-check"></i> 126 תרגילים אינטראקטיביים, נשמרים בענן בין מכשירים</li>
+                </ul>
+                <button class="landing-cta landing-cta-big" onclick="game.hideLanding()">
+                    <span class="landing-cta-text"><i class="fa-solid fa-play"></i> בואו נשחק</span>
+                    <span class="landing-cta-shine"></span>
+                </button>
+                <p class="landing-social-proof landing-social-proof-final"><i class="fa-solid fa-users"></i> הצטרפו ל-2,400+ מפתחים שכבר שלטו ב-Claude Code</p>
+            </div>
+        </section>
+
+        <footer class="landing-footer">
+            <p>מדריך לא רשמי. אינו קשור ל-Anthropic · נבנה עם Claude Code <i class="fa-solid fa-terminal"></i></p>
+        </footer>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen" style="display: flex;">
+        <div class="loading-content">
+            <div class="loading-spinner-large"></div>
+            <p class="loading-text">טוען את המשחק...</p>
+        </div>
+    </div>
+
+    <!-- Onboarding Overlay -->
+    <div id="onboarding-overlay" class="onboarding-overlay" style="display: none;">
+        <div class="onboarding-card">
+            <button class="onboarding-skip" onclick="game.skipOnboarding()">דלג &larr;</button>
+            <div class="onboarding-step" id="onboarding-step-content"></div>
+            <div class="onboarding-dots" id="onboarding-dots"></div>
+            <button class="btn btn-primary btn-full" id="onboarding-btn" onclick="game.nextOnboardingStep()">הבא</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="app-header" style="display: none;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="logo"><i class="fa-solid fa-terminal"></i> Claude Code Master</div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item xp">
+                    <span class="icon"><i class="fa-solid fa-star"></i></span>
+                    <span id="xp-value">0</span>
+                </div>
+                <div class="stat-item streak">
+                    <span class="icon"><i class="fa-solid fa-fire"></i></span>
+                    <span id="streak-value">0</span>
+                </div>
+                <div class="stat-item hearts">
+                    <div class="hearts-display" id="hearts-container">
+                        <span class="heart"><i class="fa-solid fa-heart"></i></span>
+                        <span class="heart"><i class="fa-solid fa-heart"></i></span>
+                        <span class="heart"><i class="fa-solid fa-heart"></i></span>
+                        <span class="heart"><i class="fa-solid fa-heart"></i></span>
+                        <span class="heart"><i class="fa-solid fa-heart"></i></span>
+                    </div>
+                </div>
+                <button class="sound-toggle" id="sound-toggle" onclick="game.toggleSound()" title="השתק/הפעל צלילים">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+                <button class="user-menu-btn" id="user-menu-btn" onclick="game.toggleUserMenu()" aria-label="תפריט">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Heart Recovery Timer -->
+        <div class="heart-timer-bar" id="heart-timer-bar" style="display: none;">
+            <div class="container">
+                <span class="heart-timer-text" id="heart-timer-text"><i class="fa-solid fa-heart"></i> +1 בעוד 20:00</span>
+                <div class="heart-timer-progress">
+                    <div class="heart-timer-fill" id="heart-timer-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- User Menu -->
+    <div class="user-menu" id="user-menu" style="display: none;">
+        <div class="user-menu-email" id="user-menu-email" style="padding: 10px 14px; font-size: 0.82em; opacity: 0.7; border-bottom: 1px solid rgba(255,255,255,0.08);">מצב אורח (נשמר במכשיר)</div>
+        <button class="user-menu-item" id="menu-login-btn" onclick="game.showAuthModal()"><i class="fa-solid fa-cloud-arrow-up"></i> התחבר ושמור בענן</button>
+        <button class="user-menu-item" id="menu-logout-btn" style="display: none;" onclick="game.logout()"><i class="fa-solid fa-right-from-bracket"></i> התנתק</button>
+        <button class="user-menu-item" onclick="game.showStats()"><i class="fa-solid fa-chart-bar"></i> הסטטיסטיקות שלי</button>
+        <button class="user-menu-item" onclick="game.resetProgress()"><i class="fa-solid fa-rotate-left"></i> איפוס התקדמות</button>
+    </div>
+
+    <!-- Level Up Overlay -->
+    <div class="level-up-overlay" id="level-up-overlay" style="display: none;">
+        <div class="level-up-text" id="level-up-text"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="container" id="progress-wrapper" style="display: none;">
+        <div class="progress-container" id="progress-container" style="display: none;">
+            <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container" id="main-content" style="display: none;">
+        <div id="game-container"></div>
+    </main>
+
+    <!-- Footer Actions -->
+    <div class="footer-actions" id="footer-actions" style="display: none;">
+        <div class="container">
+            <button class="btn btn-secondary" onclick="game.exitLesson()">יציאה</button>
+            <button class="btn btn-primary" id="check-btn" disabled onclick="game.checkAnswer()">בדיקה</button>
+        </div>
+    </div>
+
+    <!-- Feedback Panel -->
+    <div class="feedback-panel" id="feedback-panel">
+        <div class="feedback-content">
+            <div class="feedback-header">
+                <span class="feedback-icon" id="feedback-icon"><i class="fa-solid fa-circle-check"></i></span>
+                <span class="feedback-title" id="feedback-title">מעולה!</span>
+            </div>
+            <div class="feedback-explanation" id="feedback-explanation"></div>
+            <button class="feedback-btn" id="feedback-btn" onclick="game.continueToNext()">המשך</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon" id="modal-icon"></div>
+            <div class="modal-title" id="modal-title">כותרת</div>
+            <div class="modal-text" id="modal-text">טקסט</div>
+            <div class="modal-buttons" id="modal-buttons">
+                <button class="btn btn-primary">אישור</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="flipbook.js?v=11"></script>
+    <script src="data.js?v=11"></script>
+    <script src="game.js?v=11"></script>
+</body>
+</html>
