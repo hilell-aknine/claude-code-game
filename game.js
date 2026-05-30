@@ -566,8 +566,6 @@ class ClaudeCodeGame {
         const body = `
             <div style="text-align:right; display:flex; flex-direction:column; gap:10px;">
                 <p style="opacity:.8; font-size:.9em; margin:0 0 4px;">התחבר כדי לשמור את ההתקדמות ולסנכרן בין מכשירים. ההתקדמות הנוכחית שלך תישמר.</p>
-                <button class="btn btn-secondary btn-full" onclick="game.loginWithGoogle()"><i class="fa-brands fa-google"></i> המשך עם Google</button>
-                <div style="display:flex; align-items:center; gap:8px; opacity:.5; font-size:.8em;"><hr style="flex:1;border:none;border-top:1px solid currentColor;"> או <hr style="flex:1;border:none;border-top:1px solid currentColor;"></div>
                 <input id="cc-auth-email" type="email" placeholder="אימייל" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:inherit;">
                 <input id="cc-auth-pass" type="password" placeholder="סיסמה (6+ תווים)" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:inherit;">
                 <div id="cc-auth-error" style="display:none;color:#ff6b6b;font-size:.85em;"></div>
