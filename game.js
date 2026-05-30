@@ -559,6 +559,9 @@ class ClaudeCodeGame {
         if (emailEl) emailEl.textContent = realUser ? (this.user.email || 'מחובר') : 'מצב אורח (נשמר במכשיר)';
         if (loginBtn) loginBtn.style.display = realUser ? 'none' : 'flex';
         if (logoutBtn) logoutBtn.style.display = realUser ? 'flex' : 'none';
+        // Header register button: show only for guests
+        const headerReg = document.getElementById('header-register-btn');
+        if (headerReg) headerReg.style.display = realUser ? 'none' : 'inline-flex';
     }
 
     showAuthModal() {

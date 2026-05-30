@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
 
     <!-- Meta Pixel Code (Hillel personal) -->
     <script>
@@ -81,8 +81,11 @@
                 <span class="landing-cta-text"><i class="fa-solid fa-play"></i> מתחילים עכשיו — השיעור הראשון 3 דקות</span>
                 <span class="landing-cta-shine"></span>
             </button>
+            <button class="landing-register-btn" onclick="game.hideLanding(); setTimeout(function(){game.showAuthModal()}, 300);">
+                <i class="fa-solid fa-user-plus"></i> הרשמה חינם · לשמור את ההתקדמות
+            </button>
             <p class="landing-social-proof"><i class="fa-solid fa-users"></i> הצטרפו לאלפי בעלי עסקים שכבר מייעלים את העבודה עם AI</p>
-            <p class="landing-hero-micro">בלי ניסיון טכני · עובד על כל מכשיר · בלי הרשמה</p>
+            <p class="landing-hero-micro">בלי ניסיון טכני · עובד על כל מכשיר · אפשר גם בלי הרשמה</p>
         </section>
 
         <!-- Who is this for? -->
@@ -360,6 +363,7 @@
                         <span class="heart"><i class="fa-solid fa-heart"></i></span>
                     </div>
                 </div>
+                <button class="header-register-btn" id="header-register-btn" onclick="game.showAuthModal()" title="הרשמה / התחברות"><i class="fa-solid fa-user-plus"></i> הרשמה</button>
                 <button class="sound-toggle" id="sound-toggle" onclick="game.toggleSound()" title="השתק/הפעל צלילים">
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
@@ -440,8 +444,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="flipbook.js?v=17"></script>
-    <script src="data.js?v=17"></script>
-    <script src="game.js?v=17"></script>
+    <script src="flipbook.js?v=18"></script>
+    <script src="data.js?v=18"></script>
+    <script src="game.js?v=18"></script>
 </body>
 </html>

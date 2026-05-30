@@ -115,6 +115,15 @@ body.flipbook-on .landing-page { background: transparent; }
 .landing-cta-big { font-size: 1.15rem; padding: 18px 44px; }
 .landing-hero-micro { color: var(--text-muted); font-size: 0.73rem; margin-top: 16px; position: relative; letter-spacing: 0.2px; }
 
+/* Register button on landing (secondary to the main CTA) */
+.landing-register-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 12px 28px; border-radius: var(--r-full); background: transparent; border: 1.5px solid rgba(0,212,170,0.4); color: var(--color-terminal); font-family: var(--font-body); font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+.landing-register-btn:hover { background: rgba(0,212,170,0.08); border-color: var(--color-terminal); transform: translateY(-2px); }
+
+/* Register button in the game header (guest mode only) */
+.header-register-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--r-full); background: linear-gradient(135deg, var(--color-terminal), #00a886); color: var(--bg-base); border: none; font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: transform 0.2s; }
+.header-register-btn:hover { transform: translateY(-1px); }
+@media (max-width: 480px) { .header-register-btn { padding: 6px 11px; font-size: 0.72rem; } .header-register-btn span { display: none; } }
+
 /* Stats */
 .landing-stats-section { padding: 0 20px 8px; max-width: 500px; margin: 0 auto; }
 .landing-stats-row { display: flex; align-items: center; justify-content: center; background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--r-xl); padding: 20px 0; }
