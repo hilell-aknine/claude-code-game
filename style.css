@@ -63,6 +63,17 @@ body.flipbook-on #flipbook-canvas,
 body.flipbook-on #flipbook-scrim { display: block; }
 body.flipbook-on .landing-page { background: transparent; }
 
+/* ═══ Leaderboard (inside modal) ═══ */
+.lb-head { font-size: 0.82rem; color: var(--text-secondary); text-align: center; margin-bottom: 14px; }
+.lb-list { display: flex; flex-direction: column; gap: 6px; }
+.lb-row { display: flex; align-items: center; gap: 10px; background: var(--bg-overlay); border: 1px solid var(--border); border-radius: var(--r-md); padding: 10px 14px; }
+.lb-row .lb-rank { width: 34px; font-weight: 800; font-size: 1.05rem; text-align: center; flex-shrink: 0; }
+.lb-row .lb-name { flex: 1; font-size: 0.9rem; color: var(--text-primary); }
+.lb-row .lb-xp { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); }
+.lb-row.lb-me { border-color: var(--color-terminal); background: rgba(0,212,170,0.1); }
+.lb-row.lb-me .lb-name { color: var(--color-terminal); font-weight: 700; }
+.lb-sep { text-align: center; color: var(--text-muted); letter-spacing: 4px; padding: 2px 0; }
+
 /* ═══ Landing Page ═══ */
 .landing-page { background: var(--bg-base); min-height: 100vh; overflow-x: hidden; }
 

@@ -1627,6 +1627,99 @@ class ClaudeCodeGame {
                 <button class="btn btn-secondary btn-full" onclick="game.transitionTo(function() { game.renderHomeScreen() })">מסך ראשי</button>
             </div>
         `;
+
+        // Positive-motivation popup based on the player's standing (after every lesson)
+        this.showEncouragementPopup();
+    }
+
+    // ═══════════════════════════════════════
+    // Leaderboard + positive-motivation popups
+    // ═══════════════════════════════════════
+    async fetchLeaderboard() {
+        try {
+            const { data, error } = await _supabase.rpc('get_leaderboard', { my_xp: this.playerData.xp || 0 });
+            if (error || !data) return null;
+            return data;
+        } catch (e) { return null; }
+    }
+
+    async showEncouragementPopup() {
+        // Give the cloud save a moment, then read standings
+        const lb = await this.fetchLeaderboard();
+        // Build a positive message. Percentile = % of active players you're at-or-ahead-of.
+        let icon = '<i class="fa-solid fa-trophy"></i>';
+        let title, text;
+        const xp = this.playerData.xp || 0;
+
+        if (lb && lb.total_active >= 5) {
+            const pct = lb.my_percentile;           // 0..100
+            const rank = lb.my_rank;
+            const ahead = Math.max(0, 100 - pct);    // % still ahead of you
+            if (pct >= 90) {
+                icon = '<i class="fa-solid fa-crown"></i>';
+                title = 'אלופים! 👑';
+                text = `אתם ב-TOP ${ahead <= 0 ? 1 : ahead}% של כל השחקנים. מיקום ${rank}. מטורף — ממשיכים לשמור על המקום!`;
+            } else if (pct >= 50) {
+                icon = '<i class="fa-solid fa-fire"></i>';
+                title = 'מעולה, ממשיכים! 🔥';
+                text = `עברתם כבר ${pct}% מהשחקנים! אתם במיקום ${rank}. עוד כמה שיעורים ואתם בצמרת.`;
+            } else {
+                icon = '<i class="fa-solid fa-rocket"></i>';
+                title = 'כל הכבוד! 🚀';
+                text = `רק ${pct === 0 ? 30 : Math.max(pct, 10)}% מהנרשמים הגיעו לאן שאתם. בואו נמשיך — כל שיעור מקפיץ אתכם בדירוג!`;
+            }
+        } else {
+            // Not enough data yet — pure encouragement, no fake numbers
+            icon = '<i class="fa-solid fa-rocket"></i>';
+            title = 'כל הכבוד! 🚀';
+            text = `צברתם ${xp} נקודות. אתם מבין הראשונים שמתחילים את המסע — בואו נמשיך!`;
+        }
+
+        const btns = `
+            <button class="btn btn-primary" onclick="game.closeModal(); game.showLeaderboard();">טבלת המובילים</button>
+            <button class="btn btn-secondary" onclick="game.closeModal()">ממשיכים</button>`;
+        this.showModal(icon, title, text, btns);
+    }
+
+    async showLeaderboard() {
+        this.hideUserMenu();
+        this.showModal('<i class="fa-solid fa-ranking-star"></i>', 'טבלת המובילים', 'טוען…', '');
+        const lb = await this.fetchLeaderboard();
+        const textEl = document.getElementById('modal-text');
+
+        if (!lb || !lb.top || lb.top.length === 0) {
+            textEl.innerHTML = `<div style="opacity:.8;line-height:1.7;">עדיין אין מספיק שחקנים לטבלה 🙂<br>היו הראשונים — כל נקודה נספרת!</div>`;
+            document.getElementById('modal-buttons').innerHTML = `<button class="btn btn-primary" onclick="game.closeModal()">סגירה</button>`;
+            return;
+        }
+
+        const myXp = this.playerData.xp || 0;
+        const myRank = lb.my_rank;
+        const medal = r => r === 1 ? '🥇' : r === 2 ? '🥈' : r === 3 ? '🥉' : `<span style="opacity:.6">${r}</span>`;
+        let rows = lb.top.map(e => {
+            const me = (e.rank === myRank && e.xp === myXp);
+            return `<div class="lb-row${me ? ' lb-me' : ''}">
+                <span class="lb-rank">${medal(e.rank)}</span>
+                <span class="lb-name">${me ? 'אתם 👈' : 'שחקן'}</span>
+                <span class="lb-xp">${(e.xp||0).toLocaleString('he-IL')} נק׳</span>
+            </div>`;
+        }).join('');
+
+        // If the player isn't in the visible top-10, show their own row separately
+        const inTop = lb.top.some(e => e.rank === myRank && e.xp === myXp);
+        if (!inTop && myXp > 0) {
+            rows += `<div class="lb-sep">· · ·</div>
+                <div class="lb-row lb-me">
+                    <span class="lb-rank">${myRank}</span>
+                    <span class="lb-name">אתם 👈</span>
+                    <span class="lb-xp">${myXp.toLocaleString('he-IL')} נק׳</span>
+                </div>`;
+        }
+
+        textEl.innerHTML = `
+            <div class="lb-head">מתוך ${(lb.total_active||0).toLocaleString('he-IL')} שחקנים פעילים${myXp>0?` · אתם במקום ${myRank}`:''}</div>
+            <div class="lb-list">${rows}</div>`;
+        document.getElementById('modal-buttons').innerHTML = `<button class="btn btn-primary" onclick="game.closeModal()">סגירה</button>`;
     }
 
     // ═══════════════════════════════════════
