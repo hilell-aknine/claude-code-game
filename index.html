@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=15">
+    <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 
@@ -40,31 +40,31 @@
 
             <div class="landing-badge"><span class="landing-badge-dot"></span> משחק לימודי אינטראקטיבי · חינם לגמרי</div>
 
-            <!-- Terminal mockup -->
-            <div class="landing-terminal" dir="ltr">
+            <!-- Chat mockup -->
+            <div class="landing-terminal" dir="rtl">
                 <div class="landing-terminal-bar">
                     <span class="term-dot term-red"></span>
                     <span class="term-dot term-yellow"></span>
                     <span class="term-dot term-green"></span>
-                    <span class="term-title">Terminal</span>
+                    <span class="term-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Claude Code</span>
                 </div>
-                <div class="landing-terminal-body">
-                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">claude</span></div>
-                    <div class="term-line term-fade1"><span class="term-output">Claude Code v1.0 &#8212; Ready</span></div>
-                    <div class="term-line term-fade2"><span class="term-prompt">&gt;</span> <span class="term-typing">fix the bug in server.js<span class="term-cursor">|</span></span></div>
+                <div class="landing-terminal-body" style="text-align:right;">
+                    <div class="term-line"><span class="term-prompt">אתם:</span> <span class="term-typing">תבנו לי דף נחיתה לעסק<span class="term-cursor">|</span></span></div>
+                    <div class="term-line term-fade1"><span class="term-output">✓ הדף מוכן ועלה לאוויר</span></div>
+                    <div class="term-line term-fade2"><span style="color:#28c840;">בוצע ב-12 שניות</span></div>
                 </div>
             </div>
 
-            <h1 class="landing-title">תשלטו ב-<span class="landing-title-highlight">Claude Code</span><br>בדרך שבה אתם <em>באמת</em> לומדים</h1>
-            <p class="landing-whatis"><i class="fa-solid fa-terminal"></i> מה זה Claude Code? עוזר חכם (AI) של חברת Anthropic שיושב במחשב שלכם · אתם מבקשים ממנו בעברית פשוטה, והוא כותב, מתקן ומריץ קוד בשבילכם.</p>
-            <p class="landing-subtitle">לא וידאו. לא מאמר. <strong>משחק.</strong><br>126 תרגילים אינטראקטיביים שהופכים אתכם ממתחילים למאסטרים — בעברית, בקצב שלכם.</p>
+            <h1 class="landing-title">תנו ל-<span class="landing-title-highlight">בינה מלאכותית</span><br>לעשות את העבודה <em>במקומכם</em></h1>
+            <p class="landing-whatis"><i class="fa-solid fa-wand-magic-sparkles"></i> Claude Code הוא עוזר AI חכם של חברת Anthropic. אתם מבקשים ממנו בעברית פשוטה — "תבנה לי טופס", "תסדר את הקבצים", "תכין דוח" — והוא עושה את זה בשבילכם. בלי לדעת קוד.</p>
+            <p class="landing-subtitle">לא קורס משעמם. לא הרצאה. <strong>משחק.</strong><br>תלמדו לרתום AI לעסק שלכם תוך כדי משחק — בעברית, בקצב שלכם, בלי רקע טכני.</p>
 
             <button class="landing-cta" onclick="game.hideLanding()">
-                <span class="landing-cta-text"><i class="fa-solid fa-play"></i> התחילו עכשיו — השיעור הראשון לוקח 3 דקות</span>
+                <span class="landing-cta-text"><i class="fa-solid fa-play"></i> מתחילים עכשיו — השיעור הראשון 3 דקות</span>
                 <span class="landing-cta-shine"></span>
             </button>
-            <p class="landing-social-proof"><i class="fa-solid fa-users"></i> הצטרפו ל-2,400+ מפתחים שכבר שלטו ב-Claude Code</p>
-            <p class="landing-hero-micro">אפס ניסיון נדרש · עובד על כל מכשיר · בלי הרשמה</p>
+            <p class="landing-social-proof"><i class="fa-solid fa-users"></i> הצטרפו לאלפי בעלי עסקים שכבר מייעלים את העבודה עם AI</p>
+            <p class="landing-hero-micro">בלי ניסיון טכני · עובד על כל מכשיר · בלי הרשמה</p>
         </section>
 
         <!-- Who is this for? -->
@@ -72,19 +72,19 @@
             <h2 class="landing-section-title">למי זה <span class="title-accent">מתאים?</span></h2>
             <div class="landing-audience-grid">
                 <div class="landing-audience-card">
-                    <span class="landing-audience-icon"><i class="fa-solid fa-seedling"></i></span>
-                    <span class="landing-audience-title">המתחיל הסקרן</span>
-                    <span class="landing-audience-text">מפתח שרק שמע על Claude Code ולא יודע מאיפה להתחיל</span>
+                    <span class="landing-audience-icon"><i class="fa-solid fa-store"></i></span>
+                    <span class="landing-audience-title">בעל עסק</span>
+                    <span class="landing-audience-text">רוצה לרתום AI כדי לחסוך זמן ולצמוח, בלי לשכור מתכנת</span>
                 </div>
                 <div class="landing-audience-card">
-                    <span class="landing-audience-icon" style="--accent: #3b82f6;"><i class="fa-solid fa-layer-group"></i></span>
-                    <span class="landing-audience-title">ה-DevOps / Full-stack</span>
-                    <span class="landing-audience-text">מי שרוצה לחסוך 10+ שעות בשבוע על משימות חוזרות</span>
+                    <span class="landing-audience-icon" style="--accent: #3b82f6;"><i class="fa-solid fa-briefcase"></i></span>
+                    <span class="landing-audience-title">נותן שירות</span>
+                    <span class="landing-audience-text">יועץ, מטפל, מאמן · רוצה לתת ללקוחות יותר ולעבוד פחות</span>
                 </div>
                 <div class="landing-audience-card">
-                    <span class="landing-audience-icon" style="--accent: #f59e0b;"><i class="fa-solid fa-coins"></i></span>
-                    <span class="landing-audience-title">המשלם על API</span>
-                    <span class="landing-audience-text">כל מי שמשלם על טוקנים ורוצה לייעל עלויות בלי להתפשר</span>
+                    <span class="landing-audience-icon" style="--accent: #f59e0b;"><i class="fa-solid fa-lightbulb"></i></span>
+                    <span class="landing-audience-title">סקרן ל-AI</span>
+                    <span class="landing-audience-text">שמע שכולם מדברים על זה ורוצה סוף סוף להבין איך מתחילים</span>
                 </div>
             </div>
         </section>
@@ -111,27 +111,27 @@
 
         <!-- Pain Points -->
         <section class="landing-section">
-            <h2 class="landing-section-title">בלי Claude Code, אתם<br><span class="title-accent">עובדים פי 10 יותר קשה</span></h2>
+            <h2 class="landing-section-title">בלי AI, אתם<br><span class="title-accent">עובדים פי 10 יותר קשה</span></h2>
             <div class="landing-pain-grid">
                 <div class="landing-pain-card">
                     <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">😵‍💫</span></div>
                     <div class="landing-pain-content">
-                        <span class="landing-pain-title">מאיפה מתחילים?</span>
-                        <span class="landing-pain-text">שמעתם על Claude Code אבל ההתקנה, ההגדרות והפקודות מרגישים מבלבלים</span>
+                        <span class="landing-pain-title">כולם מדברים על AI, ואתם לא יודעים מאיפה להתחיל</span>
+                        <span class="landing-pain-text">שמעתם שזה משנה הכל, אבל כל מדריך מרגיש טכני ומבלבל</span>
                     </div>
                 </div>
                 <div class="landing-pain-card">
                     <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">⏳</span></div>
                     <div class="landing-pain-content">
-                        <span class="landing-pain-title">שעות על משימות של דקות</span>
-                        <span class="landing-pain-text">קוראים, מחפשים, מתקנים ידנית — דברים שClaude Code עושה בשניות</span>
+                        <span class="landing-pain-title">שעות על משימות שאפשר לסיים בדקות</span>
+                        <span class="landing-pain-text">תוכן, מיילים, טפסים, סידור קבצים · עבודה ידנית ש-AI עושה בשניות</span>
                     </div>
                 </div>
                 <div class="landing-pain-card">
-                    <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">🔥</span></div>
+                    <div class="landing-pain-icon-wrap"><span class="landing-pain-emoji">💸</span></div>
                     <div class="landing-pain-content">
-                        <span class="landing-pain-title">שורפים טוקנים (= כסף)</span>
-                        <span class="landing-pain-text">הוראות לא מדויקות, שיחות ארוכות, מודל לא מתאים — הכל עולה</span>
+                        <span class="landing-pain-title">משלמים לאחרים על מה שתוכלו לעשות לבד</span>
+                        <span class="landing-pain-text">כל שינוי קטן באתר או אוטומציה עולה לכם כסף ומחכה לאיש מקצוע</span>
                     </div>
                 </div>
             </div>
@@ -139,40 +139,31 @@
 
         <!-- Before / After -->
         <section class="landing-section" dir="rtl">
-            <h2 class="landing-section-title">לפני ואחרי <span class="title-accent">Claude Code</span></h2>
+            <h2 class="landing-section-title">לפני ואחרי <span class="title-accent">שלמדתם להשתמש ב-AI</span></h2>
             <div class="landing-ba-grid">
                 <div class="landing-ba-col landing-ba-before">
                     <div class="landing-ba-head"><span class="landing-ba-tag">לפני</span></div>
-                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מבזבזים שעה על באג שמתחבא בין הקבצים</div>
-                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מעתיקים קוד הלוך ושוב מהדפדפן לעורך</div>
-                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מנחשים פקודות ומקווים שלא נשבור כלום</div>
+                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> יושבים שעות על תוכן, מיילים ודוחות</div>
+                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> מחכים (ומשלמים) לאיש מקצוע לכל שינוי קטן</div>
+                    <div class="landing-ba-item"><span class="landing-ba-x">❌</span> רעיונות טובים נתקעים כי "אין זמן/אין כסף"</div>
                 </div>
                 <div class="landing-ba-col landing-ba-after">
                     <div class="landing-ba-head"><span class="landing-ba-tag landing-ba-tag-after">אחרי</span></div>
-                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> הבאג נמצא ומתוקן בשניות, מול העיניים</div>
-                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> Claude עובד ישירות על הקבצים בפרויקט</div>
-                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> כל פעולה מסוכנת מבקשת אישור קודם</div>
+                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> מבקשים בעברית פשוטה — וזה נעשה בשניות</div>
+                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> מייצרים תוכן, טפסים ואוטומציות לבד</div>
+                    <div class="landing-ba-item"><span class="landing-ba-v">✅</span> מוציאים רעיונות לפועל באותו יום, בלי תלות</div>
                 </div>
             </div>
-            <div class="landing-ba-terminal" dir="ltr">
-                <div class="landing-terminal-bar">
-                    <span class="term-dot term-red"></span>
-                    <span class="term-dot term-yellow"></span>
-                    <span class="term-dot term-green"></span>
-                    <span class="term-title">Terminal</span>
-                </div>
-                <div class="landing-terminal-body">
-                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">claude</span> <span class="term-output">"fix the bug in server.js"</span></div>
-                    <div class="term-line"><span class="term-output">✓ Found null check missing on line 42</span></div>
-                    <div class="term-line"><span class="term-output">✓ Patched &amp; tests passing</span></div>
-                    <div class="term-line"><span style="color:#28c840;">done in 4 seconds</span> <span class="term-cursor">|</span></div>
-                </div>
+            <div class="landing-ba-chat" dir="rtl">
+                <div class="ba-chat-you"><i class="fa-solid fa-user"></i> "תכין לי מייל תזכורת ללקוחות שלא חזרו החודש"</div>
+                <div class="ba-chat-ai"><i class="fa-solid fa-wand-magic-sparkles"></i> ✓ המייל מוכן · ✓ מנוסח אישית · ✓ מוכן לשליחה</div>
+                <div class="ba-chat-time">נעשה ב-6 שניות</div>
             </div>
         </section>
 
         <!-- What You'll Master -->
         <section class="landing-section">
-            <h2 class="landing-section-title">מה תשלטו בזה<br><span class="title-accent">אחרי 15 דקות של משחק?</span></h2>
+            <h2 class="landing-section-title">מה תדעו לעשות<br><span class="title-accent">אחרי 15 דקות של משחק?</span></h2>
             <div class="landing-modules-grid">
                 <div class="landing-module-card" style="--accent: #00d4aa;">
                     <div class="landing-module-num">01</div>
@@ -286,17 +277,17 @@
                 <div class="landing-final-glow"></div>
                 <div class="landing-final-emoji">🚀</div>
                 <h2>מוכנים?</h2>
-                <p>מ-<strong>Beginner</strong> ל-<strong>Claude Code Master</strong><br>בחינם · בעברית · בקצב שלכם</p>
+                <p>ממי <strong>ששמע על AI</strong> למי <strong>שמשתמש בו כל יום</strong><br>בחינם · בעברית · בקצב שלכם</p>
                 <ul class="landing-final-benefits">
-                    <li><i class="fa-solid fa-circle-check"></i> שולטים בכלי תוך שעה של משחק, לא שבוע של תיעוד</li>
-                    <li><i class="fa-solid fa-circle-check"></i> חוסכים שעות בשבוע ומפסיקים לשרוף טוקנים מיותר</li>
-                    <li><i class="fa-solid fa-circle-check"></i> 126 תרגילים אינטראקטיביים, נשמרים בענן בין מכשירים</li>
+                    <li><i class="fa-solid fa-circle-check"></i> מבינים איך לרתום AI לעסק תוך שעה של משחק</li>
+                    <li><i class="fa-solid fa-circle-check"></i> חוסכים שעות בשבוע ועושים לבד דברים שעלו כסף</li>
+                    <li><i class="fa-solid fa-circle-check"></i> 126 תרגילים פשוטים בעברית, נשמרים בין מכשירים</li>
                 </ul>
                 <button class="landing-cta landing-cta-big" onclick="game.hideLanding()">
-                    <span class="landing-cta-text"><i class="fa-solid fa-play"></i> בואו נשחק</span>
+                    <span class="landing-cta-text"><i class="fa-solid fa-play"></i> בואו נתחיל</span>
                     <span class="landing-cta-shine"></span>
                 </button>
-                <p class="landing-social-proof landing-social-proof-final"><i class="fa-solid fa-users"></i> הצטרפו ל-2,400+ מפתחים שכבר שלטו ב-Claude Code</p>
+                <p class="landing-social-proof landing-social-proof-final"><i class="fa-solid fa-users"></i> הצטרפו לאלפי בעלי עסקים שכבר מייעלים את העבודה עם AI</p>
             </div>
         </section>
 
@@ -431,8 +422,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="flipbook.js?v=15"></script>
-    <script src="data.js?v=15"></script>
-    <script src="game.js?v=15"></script>
+    <script src="flipbook.js?v=16"></script>
+    <script src="data.js?v=16"></script>
+    <script src="game.js?v=16"></script>
 </body>
 </html>
